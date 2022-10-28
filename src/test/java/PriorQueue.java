@@ -37,16 +37,24 @@ public class PriorQueue {
             switch (ch) {
                 case "0" -> {
                     PriorityQueue<Guest> copy = new PriorityQueue<Guest>(gq);
-                    while (!copy.isEmpty()) {
-                        Guest gg = copy.poll();
-                        System.out.println(gg.getName()+" "+gg.getDistance());
+                    if (!copy.isEmpty()) {
+                        while (!copy.isEmpty()) {
+                            Guest gg = copy.poll();
+                            System.out.println(gg.getName() + " " + gg.getDistance());
+                        }
+                    } else {
+                        System.out.println("No customers left! Queue is empty!");
                     }
                     break;
                 }
                 case "1" -> {
-                    Guest gg = gq.poll();
-                    System.out.println("Serving customer");
-                    System.out.println(gg.getName()+" "+gg.getDistance());
+                    try {
+                        Guest gg = gq.poll();
+                        System.out.println("Serving customer");
+                        System.out.println(gg.getName() + " " + gg.getDistance());
+                    } catch (NullPointerException e) {
+                        System.out.println("No customers left!");
+                    }
                     break;
                 }
                 case "2" -> {
@@ -75,9 +83,4 @@ public class PriorQueue {
             }
         }
     }
-
-    public static void newGuest(){
-
-    }
-
 }
